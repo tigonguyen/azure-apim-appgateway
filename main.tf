@@ -69,13 +69,13 @@ resource "azurerm_api_management_custom_domain" "customDomain" {
 
   proxy {
     host_name            = var.gatewayHostname # API gateway host
-    certificate          = data.local_file.gatewayCertPfx
+    certificate          = base64encode(data.local_file.gatewayCertPfx)
     certificate_password = var.gatewayCertPfxPassword
   }
 
   portal {
     host_name            = var.portalHostname # API developer portal host
-    certificate          = data.local_file.portalCertPfx
+    certificate          = base64encode(data.local_file.portalCertPfx)
     certificate_password = var.portalCertPfxPassword
   }
 }
@@ -115,12 +115,12 @@ resource "azurerm_application_gateway" "apim-app-gw-pdl" {
   # step 4 - configure certs for the App Gateway
   ssl_certificate {
     name     = "apim-gw-cert01"
-    data     = data.local_file.gatewayCertPfx
+    data     = base64encode(data.local_file.gatewayCertPfx)
     password = var.gatewayCertPfxPassword
   }
   ssl_certificate {
     name     = "apim-portal-cert01"
-    data     = data.local_file.portalCertPfx
+    data     = base64encode(data.local_file.portalCertPfx)
     password = var.portalCertPfxPassword
   }
 
@@ -167,7 +167,7 @@ resource "azurerm_application_gateway" "apim-app-gw-pdl" {
   # step 7 - upload cert for SSL-enabled backend pool resources
   authentication_certificate {
     name = "whitelistcert1"
-    data = data.local_file.gatewayCertCer
+    data = base64encode(data.local_file.gatewayCertCer)
   }
 
   # step 8 - configure HTTPs backend settings for the App Gateway
@@ -226,7 +226,7 @@ resource "azurerm_application_gateway" "apim-app-gw-pdl" {
     enabled          = true
     firewall_mode    = "Prevention"
     rule_set_type    = "OWASP"
-    rule_set_version = "3.1"
+    rule_set_version = "2.2.9"
   }
 
   # ----- Add path based routing rule for /external/* API URL's only ----- #

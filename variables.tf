@@ -14,13 +14,13 @@ variable "subscription_id" {
 variable "user_id" {
   description = "Specify the User/Service Principle linked to the subscription"
   type       = string
-  default    = "8e9dbee5-0265-42b0-b689-1db46ad8777f"
+  default    = "d5107578-07d2-4c5b-9297-6715d1482524"
 }
 
 variable "user_secret" {
   description = "User/Service Principle password"
   type       = string
-  default    = "sXcrAJLkBYhwtgJ~vqUtV~lqXYSMHWG~a9"
+  default    = "V-q9tlYzjVZUoWnnXN-x03M14opMzCb0m0"
 }
 
 variable "rg_region" {
@@ -62,19 +62,19 @@ variable "portalHostname" {
 variable "gatewayCertCerPath" {
   description = "Full path to api.yourdomain.co.uk .cer file"
   type        = string
-  default     = "C:\\Users\\opsadmin\\api7.outstacart.cer"
+  default     = "C:\\Users\\thanhnd64\\.ssh\\ida_rsa"
 }
 
 variable "gatewayCertPfxPath" {
   description = "Full path to api.yourdomain.co.uk .pfx file"
   type        = string
-  default     = "C:\\Users\\opsadmin\\api7.outstacart.pfx"
+  default     = "C:\\Users\\thanhnd64\\.ssh\\ida_rsa"
 }
 
 variable "portalCertPfxPath" {
   description = "Full path to portal.yourdomain.co.uk .pfx file"
   type        = string
-  default     = "C:\\Users\\opsadmin\\api7.outstacart.pfx"
+  default     = "C:\\Users\\thanhnd64\\.ssh\\ida_rsa"
 }
 
 variable "gatewayCertPfxPassword" {

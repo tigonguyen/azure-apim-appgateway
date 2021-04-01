@@ -1,5 +1,5 @@
 provider "local" {
-  
+
 }
 
 data "local_file" "gatewayCertCer" {
